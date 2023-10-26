@@ -1,7 +1,7 @@
 .Main-Container{
     width: 375px;
     min-height: 100vh;
-    background-color: #f1f1f1;
+    background-color: #f1f1f9;
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
@@ -12,6 +12,6 @@
     position: relative;
     /* background-color: black; */
     width: 100%;
-    flex: 9.5;
+    flex: 9.3;
     z-index: 1;
 }
