@@ -1,21 +1,24 @@
 import React, { useState } from "react";
 import "./sideMap.scss";
 
-const SideMap = ({ data, name }) => {
-  const [selectedItem, setSelectedItem] = useState(null);
-
+const SideMap = ({ data, category, onClick, openCategory, openItem }) => {
+  const [showSubitem,setShowSubitem]=useState(false)
   const handleItemClick = (item) => {
-    setSelectedItem(item.id === selectedItem ? null : item.id);
-    console.log(item)
+    if (item.id === openItem && category === openCategory) {
+      // If the clicked item is already open, close it
+      onClick(null, null);
+    } else {
+      onClick(category, item.id);
+    }
   };
 
   return (
     <div className="SideMapping">
-      <div className="Item-Name">{name}</div>
+      <div className="Item-Name">{category}</div>
       <div className="SideMenu">
         {data.map((item) => (
-          <div className="Main-Content">
-            <div key={item.id} className={`SideItem ${item.class}`}>
+          <div key={item.id} className={`Main-Content`}>
+            <div className={`SideItem ${item.class}`}>
               <div
                 className="Sub-SideItem"
                 onClick={() => handleItemClick(item)}
@@ -24,18 +27,55 @@ const SideMap = ({ data, name }) => {
                   <div className="Sub-icon">{item.icon}</div>
                   {item.name}
                 </div>
-                <div className={`Sub-SideRight-arrow ${item.id === selectedItem ? 'transform' : ''}`}>{item.arrow}</div>
+                <div
+                  className={`Sub-SideRight-arrow ${
+                    item.id === openItem && category === openCategory
+                      ? "transform"
+                      : ""
+                  }`}
+                >
+                  {item.arrow}
+                </div>
               </div>
             </div>
 
-            {item.id === selectedItem &&
+            {item.id === openItem &&
+              category === openCategory &&
               item.subItem &&
+              Array.isArray(item.subItem) &&
               item.subItem.length > 0 && (
-                <div   className={`Subitems ${item.id === selectedItem ? 'show' : ''}`}>
+                <div className={`Subitems show`}>
                   {item.subItem.map((subitem) => (
-                    <div key={subitem.name} className="Subitems-Item">
-                      <div className={`Subitem-circle`}>{subitem.circle}</div>
-                      {subitem.name}
+                    <div key={subitem.name} className="Subitems-Item-container" >
+                      <div className="Subitems-Item" onClick={()=>setShowSubitem(!showSubitem)}>
+                        <div className={`Subitem-circle-name`}>
+                          <div className="Subitem-circle">
+                            {subitem.circle}{" "}
+                          </div>
+                          {subitem.name}
+                        </div>
+                        <div className={`Sub-SideRight-arrow ${showSubitem && 'transform'}`}>
+                          {subitem.arrow}
+                        </div>
+                      </div>
+                      {subitem.subItem &&
+                        Array.isArray(subitem.subItem) &&
+                        subitem.subItem.length > 0 &&  (
+                          <div className={`SubsubItem ${showSubitem? 'show':'close'}`}>
+                            {subitem.subItem.map((subsubitem) => (
+                              <div key={subsubitem.name} className="Subsubitem-container">
+                                <div className="Subsub-Item">
+                                  <div className="Subitem-circle">
+                                    {subsubitem.circle}
+                                  </div>
+                                  {subsubitem.name}
+                                  <div className="Sub-SideRight-arrow">{subsubitem.arrow}</div>
+                                </div>
+                              
+                              </div>
+                            ))}
+                          </div>
+                        )}
                     </div>
                   ))}
                 </div>

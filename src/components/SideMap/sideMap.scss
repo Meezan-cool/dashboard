@@ -70,23 +70,43 @@
     //     transform: rotate(90deg);
     // }
 }
-.Subitems{
+
+  .Subitems {
     padding: 10px 0px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 15px;
     font-size: 13.4px;
-    max-height: 0;
+    cursor: pointer;
     overflow: hidden;
-    transition: max-height 0.8s ease;
+    height: 0;
+    transition: height 0.3s ease; // You can adjust the duration and easing function as needed
+    &.show {
+      height: auto; // When the 'open' class is applied, the height will be 'auto'
+    }
+  }
+
+.Subitems-Item-container{
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 100%;
+    // background-color: #514aa1;
+    position: relative;
 }
 .Subitems-Item{
+    width: 100%;
     padding-left: 20%;
     display: flex;
     gap: 5px;
     align-items: center;
     color: #be88d3;
+}
+.Subitem-circle-name{
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
 .Subitem-circle{
 font-size: 11px;
@@ -96,7 +116,30 @@ font-size: 11px;
 }
 
   
-  .Subitems.show {
-    max-height: 500px; /* Adjust this value to match the height of your subitems container */
+  .Subsubitem-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+   
+    // background-color: beige;
   }
-  
+ 
+  .SubsubItem.show{
+    width: 100%;
+    padding: 15px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  .Subsub-Item{
+    padding-left: 30%;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #be88d3;
+  }
+  .close{
+    display: none;
+  }
