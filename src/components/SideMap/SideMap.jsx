@@ -55,8 +55,9 @@ const SideMap = ({ data, category, onClick, openCategory, openItem }) => {
                         </div>
                       </div>
                       {subitem.subItem && Array.isArray(subitem.subItem) && subitem.subItem.length > 0 && (
-                        <div className={`SubsubItem ${showSubitem ? "show" : "close"}`}>
-                          {subitem.subItem.map((subsubitem) => (
+                        <div className={`SubsubItem `}>
+                        <div className={`SubsubItem-Effect ${showSubitem ? "show" : "close"}`}>
+                        {subitem.subItem.map((subsubitem) => (
                             <div key={subsubitem.name} className="Subsubitem-container">
                               <div className="Subsub-Item">
                                 <div className="Subitem-circle">{subsubitem.circle}</div>
@@ -65,6 +66,7 @@ const SideMap = ({ data, category, onClick, openCategory, openItem }) => {
                               </div>
                             </div>
                           ))}
+                        </div>
                         </div>
                       )}
                     </div>
