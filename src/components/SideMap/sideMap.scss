@@ -156,7 +156,7 @@ font-size: 11px;
     overflow: hidden;
     position: relative;
     max-height: 0; 
-    transition: max-height 450ms ease-in-out,padding 550ms ease-in-out;
+    transition: max-height 200ms ease-in-out,padding 300ms ease-in-out;
   }
   .transition {
     max-height: 1000px;
