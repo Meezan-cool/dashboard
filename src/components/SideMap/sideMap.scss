@@ -18,6 +18,8 @@
 // 9089d9
 .Main-Content{
     width: 100%;
+    min-height: auto;
+    transition: max-height 450ms ease-in-out;
 }
 .SideMenu{
     display: flex;
@@ -66,26 +68,7 @@
     position: absolute;
     right: 6%;
     transition: all 200ms ease-in-out;
-    // &:hover{
-    //     transform: rotate(90deg);
-    // }
 }
-
-  .Subitems {
-    padding: 10px 0px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 15px;
-    font-size: 13.4px;
-    cursor: pointer;
-    overflow: hidden;
-    height: 0;
-    transition: height 0.3s ease; // You can adjust the duration and easing function as needed
-    &.show {
-      height: auto; // When the 'open' class is applied, the height will be 'auto'
-    }
-  }
 
 .Subitems-Item-container{
     display: flex;
@@ -143,3 +126,44 @@ font-size: 11px;
   .close{
     display: none;
   }
+
+  
+  .Subitems {
+    width: 100%;
+    // padding: 10px 0px;
+    // padding: 10px 0px;
+    // display: flex;
+    // flex-direction: column;
+    // align-items: flex-start;
+    // gap: 15px;
+    // background-color: black;
+    // font-size: 13.4px;
+    // cursor: pointer;
+    // overflow: hidden;
+    // position: relative;
+    // max-height: 0; 
+    // transition: max-height 450ms ease-in-out;
+  }
+  .SubItem-Effect{
+    // padding: 10px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+    
+    font-size: 13.4px;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    max-height: 0; 
+    transition: max-height 450ms ease-in-out,padding 550ms ease-in-out;
+  }
+  .transition {
+    max-height: 1000px;
+    padding: 10px 0px;
+  }
+  
+  .no-transition {
+    max-height: 0; 
+  }
+  
